@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Omkar Decor</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="nav-main">
+      <div class="logo-wrap">
+        <a href="index.html"><img src="logo.jpg" alt="Omkar Decor Logo" class="logo" /></a>
+        <span class="brandname">Omkar Decor</span>
+      </div>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="section">
+      <h1 style="border-left:7px solid #ffd700; padding-left:0.6rem;">Gallery</h1>
+      <p>Discover our stunning decor work! Click any image to enlarge.</p>
+      <div class="gallery-grid">
+        <img src="images/gallery1.jpg" alt="Stage Decor Gallery 1" class="gallery-img">
+        <img src="images/gallery2.jpg" alt="Stage Decor Gallery 2" class="gallery-img">
+        <img src="images/gallery3.jpg" alt="Stage Decor Gallery 3" class="gallery-img">
+        <img src="images/gallery4.jpg" alt="Stage with Hanging Floral Canopy - Omkar Decor" class="gallery-img">
+        <img src="images/gallery5.jpg" alt="Stage Decor Gallery 5" class="gallery-img">
+        <img src="images/gallery6.jpg" alt="Stage Decor Gallery 6" class="gallery-img">
+        <img src="images/gallery7.jpg" alt="Stage Decor Gallery 7" class="gallery-img">
+        <img src="images/stage-decor.jpg" alt="Stage Decor" class="gallery-img">
+        <img src="images/birthday-decor.jpg" alt="Birthday Decor" class="gallery-img">
+        <img src="images/balloon-decor.jpg" alt="Balloon Decor" class="gallery-img">
+        <img src="images/haladi-decor.jpg" alt="Haladi Decor" class="gallery-img">
+        <img src="images/car-decor.jpg" alt="Car Decor" class="gallery-img">
+        <img src="images/open-ground-decor.jpg" alt="Open Ground Decor" class="gallery-img">
+        <img src="images/reception-decor.jpg" alt="Reception Decor" class="gallery-img">
+        <img src="images/gallery8.jpg" alt="White and Pastel Floral Stage - Gallery 8" class="gallery-img">
+        <img src="images/gallery9.jpg" alt="Floral Canopy Stage Decor - Gallery 9" class="gallery-img">
+      </div>
+    </section>
+    <div id="galleryModal" class="gallery-modal">
+      <span class="gallery-modal-close" id="galleryModalClose">&times;</span>
+      <img class="gallery-modal-content" id="galleryModalImg" alt="Enlarged Decor">
+      <div id="galleryModalCaption" class="gallery-modal-caption"></div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer">
+      <span>&copy; 2025 Omkar Decor &mdash; Modern Minimalist Specialists</span>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+  <script>
+    // Simple modal image gallery JS for this page only
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      img.onclick = function() {
+        document.getElementById('galleryModal').style.display = 'block';
+        document.getElementById('galleryModalImg').src = this.src;
+        document.getElementById('galleryModalImg').alt = this.alt;
+        document.getElementById('galleryModalCaption').innerText = this.alt;
+      };
+    });
+    document.getElementById('galleryModalClose').onclick = function() {
+      document.getElementById('galleryModal').style.display = 'none';
+    };
+    document.getElementById('galleryModal').onclick = function(e) {
+      if(e.target === this) this.style.display = 'none';
+    };
+  </script>
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.4rem;
+      margin-top: 2.5rem;
+      justify-items: center;
+      align-items: stretch;
+    }
+    .gallery-img {
+      width: 100%;
+      max-width: 330px;
+      min-height: 170px;
+      object-fit: cover;
+      border-radius: 13px;
+      cursor: pointer;
+      border: 4px solid #ffe27460;
+      box-shadow: 0 2px 14px #ad900025;
+      transition: transform 0.16s, box-shadow 0.19s;
+    }
+    .gallery-img:hover { transform: scale(1.04); box-shadow:0 8px 28px #ffd70045; z-index:2; }
+    .gallery-modal {
+      display: none; position: fixed; z-index: 9999; left: 0;top: 0;width: 100vw;height: 100vh;
+      background-color: rgba(30,25,5,0.88); align-items: center; justify-content: center;
+    }
+    .gallery-modal-content {
+      margin: 4vh auto 0 auto;
+      display: block;
+      max-width: 750px;
+      width:80vw;
+      max-height: 75vh;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px #ffd70095, 0 1.5px 16px #fff7b5;
+    }
+    .gallery-modal-close {
+      color: #ffd700;position: fixed;right: 34px;top: 24px;font-size: 2.9em;font-weight: 800;cursor:pointer;z-index: 10001;text-shadow:1px 1px 8px #111;
+    }
+    .gallery-modal-caption {
+      margin:0.9em auto; color: #ffd700; text-align:center; font-weight:600;font-size:1.15em;letter-spacing:1.1px;
+      text-shadow: 1.5px 1.5px 8px #222;
+    }
+    @media (max-width:700px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width:480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-modal-content { max-width:98vw; }
+      .gallery-modal-close { right:18px; top:15px; }
+    }
+  </style>
+</body>
+</html>
